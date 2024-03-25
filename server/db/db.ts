@@ -11,7 +11,7 @@ export function getTodoById(id: number) {
   return db('todos').select().where({ id })
 }
 
-export function createTodo(newTodo: string): Promise<Todos> {
+export function createTodo(newTodo: Todos): Promise<Todos> {
   return db('todos').select().insert({ newTodo })
 }
 
