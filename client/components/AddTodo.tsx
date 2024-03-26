@@ -18,7 +18,8 @@ const todos = [
     is_active: false,
     priority: 4,
   },
-] as Todos[]
+]
+// ] as Todos[]
 
 function AddTodo() {
   const [newTodo, setNewTodo] = useState('')
