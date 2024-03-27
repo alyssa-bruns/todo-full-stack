@@ -9,3 +9,8 @@ export interface Todos {
 export interface Todo {
   name: string
 }
+
+export interface TodoPlusId {
+  id: number
+  name: string
+}

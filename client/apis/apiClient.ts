@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Todos, Todo } from '../models/todos'
+import { Todos, Todo, TodoPlusId } from '../models/todos'
 
 const rootUrl = '/api/v1/todos'
 
@@ -14,4 +14,9 @@ export async function addTodo(newTodo: Todo): Promise<void> {
 
 export async function deleteTodo(id: number) {
   await request.delete(rootUrl + '/' + id)
+}
+
+export async function editTodo(data: TodoPlusId) {
+  const {id, name} = data
+  await request.patch(`${rootUrl}/${id}`).send(name)
 }
