@@ -1,5 +1,4 @@
 import useFetchTodos from '../hooks/use-fetch-todos'
-import Todos from '../models/todos'
 
 // const todos = [
 //   {
