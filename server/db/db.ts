@@ -1,4 +1,4 @@
-import Todos from '../../client/models/todos'
+import { Todos,Todo } from '../../client/models/todos'
 import connection from './connection'
 
 const db = connection
@@ -11,8 +11,8 @@ export function getTodoById(id: number) {
   return db('todos').select().where({ id })
 }
 
-export function createTodo(newTodo: Todos): Promise<Todos> {
-  return db('todos').select().insert({ newTodo })
+export function createTodo(newTodo: Todos) {
+  return db('todos').insert(newTodo)
 }
 
 export function deleteTodo(id: number) {

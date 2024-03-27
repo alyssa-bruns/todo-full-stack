@@ -8,3 +8,4 @@ export default function useFetchTodos() {
         queryFn: async () => fetchTodos(),
     })
 }
+

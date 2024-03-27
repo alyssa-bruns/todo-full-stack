@@ -1,20 +1,22 @@
 // eslint-disable-next-line no-unused-vars
 
 import { useState } from 'react'
+import useAddTodo from '../hooks/use-add-todos'
 
 
 
 function AddTodo() {
   const [newTodo, setNewTodo] = useState('')
+  const mutation = useAddTodo()
 
   const handleChange = (e: React.ChangeEvent) => {
     setNewTodo(e.target.value)
-    console.log(newTodo)
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     console.log(newTodo)
     e.preventDefault()
+    mutation.mutate({name: newTodo})
     setNewTodo('')
   }
 
