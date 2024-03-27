@@ -19,8 +19,8 @@ function TodoList() {
     )
   }
 
-  const handleDelete = (id: number) => {
-    deleteTodo.mutate(id)
+  const handleDelete = async (id: number) => {
+    (await deleteTodo).mutate(id)
   }
 
   return (
@@ -32,7 +32,7 @@ function TodoList() {
           <div className="view">
             <input className="toggle" type="checkbox"/>
             <label>{todo.name}</label>
-            <button onClick={()=>{handleDelete(todo.id)}} className="destroy"></button>
+            <button onClick={()=>handleDelete(todo.id)} className="destroy"></button>
           </div>
         </li>
         </ul>
