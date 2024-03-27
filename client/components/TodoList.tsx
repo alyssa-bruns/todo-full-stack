@@ -19,8 +19,8 @@ function TodoList() {
     )
   }
 
-  const handleDelete = async (id: number) => {
-    (await deleteTodo).mutate(id)
+  const handleDelete = (id: number) => {
+    deleteTodo.mutate(id)
   }
 
   return (
