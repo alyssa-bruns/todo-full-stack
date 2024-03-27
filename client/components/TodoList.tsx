@@ -1,30 +1,13 @@
 import useFetchTodos from '../hooks/use-fetch-todos'
-
-// const todos = [
-//   {
-//     id: 1,
-//     name: 'wash dishes',
-//     is_completed: false,
-//     is_active: false,
-//     priority: 3,
-//   },
-//   { id: 2, name: 'vacuum', is_completed: false, is_active: false, priority: 5 },
-//   {
-//     id: 3,
-//     name: 'fold laundry',
-//     is_completed: false,
-//     is_active: false,
-//     priority: 4,
-//   },
-// ] as Todos[]
-
+import useDeleteTodos from "../hooks/use-delete-todos"
 
 
 function TodoList() {
   const {data: todos, isPending, isError, error } = useFetchTodos()
+  const deleteTodo= useDeleteTodos()
 
   if (isPending) {
-    <p>Loading...</p>
+    return <p>Loading...</p>
   }
 
   if (isError) {
@@ -36,7 +19,10 @@ function TodoList() {
     )
   }
 
-  console.log(todos)
+  const handleDelete = async (id: number) => {
+    (await deleteTodo).mutate(id)
+  }
+
   return (
     <>
       {todos?.map((todo) => {
@@ -46,7 +32,7 @@ function TodoList() {
           <div className="view">
             <input className="toggle" type="checkbox"/>
             <label>{todo.name}</label>
-            <button className="destroy"></button>
+            <button onClick={()=>{handleDelete(todo.id)}} className="destroy"></button>
           </div>
         </li>
         </ul>
