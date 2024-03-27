@@ -1,7 +1,7 @@
 import { deleteTodo } from "../apis/apiClient";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export default async function useDeleteTodos() {
+export default function useDeleteTodos() {
 const queryClient = useQueryClient()
 return useMutation({
     mutationFn: (id: number) => deleteTodo(id),
@@ -11,4 +11,3 @@ return useMutation({
 
 })
 }
-
