@@ -40,7 +40,17 @@ function TodoList() {
   return (
     <>
       {todos?.map((todo) => {
-        return <p key={todo.id}>{todo.name}</p>
+        return (
+        <ul className="todo-list" key={todo.id} >
+        <li className="edit">
+          <div className="view">
+            <input className="toggle" type="checkbox"/>
+            <label>{todo.name}</label>
+            <button className="destroy"></button>
+          </div>
+        </li>
+        </ul>
+        )
       })}
     </>
   )
