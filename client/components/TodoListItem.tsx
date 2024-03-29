@@ -28,6 +28,8 @@ import { Todos } from '../models/todos'
       e.preventDefault()
       editTodo.mutate({id: props.id, name: updatedTodo})
       setUpdatedTodo('')
+      setIsEditMode(false)
+
     }
 
     if(isEditMode){
@@ -35,9 +37,10 @@ import { Todos } from '../models/todos'
       <button onClick={handleCancelClick}>Cancel</button>
       <form onSubmit={handleSubmit}>
         <input
+              value = {updatedTodo}
               onChange={handleChange}
-              value={updatedTodo}
               className="new-todo"
+              placeholder={updatedTodo}
             />
       </form>
       
