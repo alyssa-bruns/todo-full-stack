@@ -14,3 +14,8 @@ export interface TodoPlusId {
   id: number
   name: string
 }
+
+export interface CompletedPlusId {
+  id: number
+  is_completed: boolean
+}
