@@ -1,4 +1,5 @@
 import useFetchTodos from '../hooks/use-fetch-todos'
+import CompleteTask from './CompleteTask'
 import DeleteItem from './DeleteItem'
 import TodoListItem from './TodoListItem'
 
@@ -26,6 +27,7 @@ function TodoList() {
         return (
       
         <li key={todo.id} >
+          <CompleteTask />
           <TodoListItem {...todo} /> {/* use spread operater to pass in the other props*/}
           <DeleteItem {...todo} />
         </li>
