@@ -1,4 +1,4 @@
-import { Todos,Todo } from '../../client/models/todos'
+import { Todos } from '../../client/models/todos'
 import connection from './connection'
 
 const db = connection
