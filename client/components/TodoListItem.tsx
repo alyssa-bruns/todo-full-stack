@@ -8,6 +8,8 @@ function TodoListItem(props: Todos) {
     const editTodo = useEditTodo()
     const [updatedTodo, setUpdatedTodo] = useState(props.name)
     const [isEditMode, setIsEditMode] = useState(false)
+    const deleteTodo= useDeleteTodos()
+
     const handleDoubleClick = (e:React.MouseEvent) => {
       e.preventDefault()
       console.log(e)
@@ -26,11 +28,16 @@ function TodoListItem(props: Todos) {
       </>
      )
     }
+
+    const handleDelete = (id: number) => {
+      deleteTodo.mutate(id)
+    }
+  
     return(
       <div className="view">
         <input className="toggle" type="checkbox"/>
         <label onDoubleClick={handleDoubleClick}>{props.name}</label>
-        {/* <button onClick={()=>handleDelete(todo.id)} className="destroy"></button> */}
+        <button onClick={()=>handleDelete(props.id)} className="destroy"></button>
       </div>
     )
   
