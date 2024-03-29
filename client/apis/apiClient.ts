@@ -18,5 +18,5 @@ export async function deleteTodo(id: number) {
 
 export async function editTodo(data: TodoPlusId) {
   const {id, name} = data
-  await request.patch(rootUrl + '/' + id).send(name)
+await request.patch(rootUrl + '/' + id).send({name})
 }

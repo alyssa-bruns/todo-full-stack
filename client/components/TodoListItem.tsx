@@ -12,7 +12,6 @@ import { Todos } from '../models/todos'
 
     const handleDoubleClick = (e:React.MouseEvent) => {
       e.preventDefault()
-      console.log(e)
       setIsEditMode(true)
     }
   
@@ -39,7 +38,6 @@ import { Todos } from '../models/todos'
               onChange={handleChange}
               value={updatedTodo}
               className="new-todo"
-              // placeholder="What needs to props done?"
             />
       </form>
       

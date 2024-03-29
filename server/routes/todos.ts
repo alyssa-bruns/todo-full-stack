@@ -50,4 +50,16 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+//PATCH /ap1/v1/todos
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const { name } = req.body
+  try{
+    const todo = await db.updateTodoName(id, name)
+    res.json(todo)
+  } catch (error) {
+    console.error(`Database error: ${error}`)
+    res.sendStatus(500)
+  }
+})
 export default router
