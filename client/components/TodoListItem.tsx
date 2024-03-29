@@ -1,5 +1,4 @@
 // import useFetchTodos from '../hooks/use-fetch-todos'
-import useDeleteTodos from "../hooks/use-delete-todos"
 import useEditTodo from '../hooks/use-edit-todo'
 import { useState} from 'react'
 import { Todos } from '../models/todos'
@@ -8,7 +7,7 @@ import { Todos } from '../models/todos'
     const editTodo = useEditTodo()
     const [updatedTodo, setUpdatedTodo] = useState(props.name)
     const [isEditMode, setIsEditMode] = useState(false)
-    const deleteTodo= useDeleteTodos()
+    
 
     const handleDoubleClick = (e:React.MouseEvent) => {
       e.preventDefault()
@@ -48,15 +47,12 @@ import { Todos } from '../models/todos'
      )
     }
 
-    const handleDelete = (id: number) => {
-      deleteTodo.mutate(id)
-    }
+    
   
     return(
       <div className="view">
         <input className="toggle" type="checkbox"/>
         <label onDoubleClick={handleDoubleClick}>{props.name}</label>
-        <button onClick={()=>handleDelete(props.id)} className="destroy"></button>
       </div>
     )
   
