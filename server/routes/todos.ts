@@ -62,4 +62,29 @@ router.patch('/:id', async (req, res) => {
     res.sendStatus(500)
   }
 })
+
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try{
+    const todo = await db.markTodoComplete(id)
+    res.json(todo)
+  } catch (error) {
+    console.error(`Database error: ${error}`)
+    res.sendStatus(500)
+  }
+})
+
+router.patch('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try{
+    const todo = await db.markTodoIncomplete(id)
+    res.json(todo)
+  } catch (error) {
+    console.error(`Database error: ${error}`)
+    res.sendStatus(500)
+  }
+})
+
+
+
 export default router
