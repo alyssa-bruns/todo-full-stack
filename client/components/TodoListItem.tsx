@@ -41,6 +41,7 @@ import CompleteTask from './CompleteTask'
               onChange={handleChange}
               className="new-todo"
               placeholder={updatedTodo}
+              aria-label="new task"
             />
       </form>
       
@@ -50,7 +51,7 @@ import CompleteTask from './CompleteTask'
     return(
       <div className="view">
           <CompleteTask {...props} />
-        <label onDoubleClick={handleDoubleClick}>{props.name}</label>
+        <label  htmlFor={`toggle ${props.name} complete`} onDoubleClick={handleDoubleClick}>{props.name}</label>
       </div>
     )
   

@@ -22,6 +22,8 @@ function CompleteTask(props: Todos) {
       return(
        <input 
             className="toggle"
+            aria-label="checkbox"
+            id={`toggle ${props.name} complete`}
             type="checkbox"
             onChange={handleCompletedClick} 
             checked={isCompleted}

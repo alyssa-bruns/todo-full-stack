@@ -22,8 +22,9 @@ function AddTodo() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <label>New Todo:
+         
           <input
+            aria-label="add a task"
             onChange={handleChange}
             value={newTodo}
             className="new-todo"
@@ -31,7 +32,7 @@ function AddTodo() {
             autoFocus={true}
            
           />
-           </label>
+        
         </form>
       </div>
     </>
