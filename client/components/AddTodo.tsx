@@ -22,13 +22,16 @@ function AddTodo() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
+          <label>New Todo:
           <input
             onChange={handleChange}
             value={newTodo}
             className="new-todo"
             placeholder="What needs to be done?"
             autoFocus={true}
+           
           />
+           </label>
         </form>
       </div>
     </>

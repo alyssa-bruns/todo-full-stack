@@ -8,7 +8,7 @@ function DeleteItem(props: Todos) {
         deleteTodo.mutate(id)
       }
     return(
-        <><button onClick={()=>handleDelete(props.id)} className="destroy"></button></>
+        <button type="button" onClick={()=>handleDelete(props.id)} className="destroy"></button>
     )
 }
 

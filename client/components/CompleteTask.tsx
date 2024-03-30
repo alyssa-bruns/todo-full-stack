@@ -20,7 +20,7 @@ function CompleteTask(props: Todos) {
     
       console.log(props.name, props.is_completed)
       return(
-        <input 
+       <input 
             className="toggle"
             type="checkbox"
             onChange={handleCompletedClick} 

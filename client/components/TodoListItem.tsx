@@ -34,7 +34,7 @@ import CompleteTask from './CompleteTask'
 
     if(isEditMode){
      return( <>
-      <button onClick={handleCancelClick}>Cancel</button>
+      <button type="button" onClick={handleCancelClick}>Cancel</button>
       <form onSubmit={handleSubmit}>
         <input
               value = {updatedTodo}

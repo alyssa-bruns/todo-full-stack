@@ -24,9 +24,8 @@ function TodoList() {
     <ul className="todo-list"  >
       {todos?.map((todo) => {
         return (
-      
         <li key={todo.id} >
-          <TodoListItem {...todo} /> {/* use spread operater to pass in the other props*/}
+          < TodoListItem {...todo} /> {/* use spread operater to pass in the other props*/}
           <DeleteItem {...todo} />
         </li>
        
