@@ -16,12 +16,10 @@ function CompleteTask(props: Todos) {
         } else {
             incompleteTask.mutate({ id: props.id, is_completed: false })
         }
-        
-        
       }
     
       console.log(props.name, props.is_completed)
-    return(
+      return(
         <input 
             className="toggle"
             type="checkbox"

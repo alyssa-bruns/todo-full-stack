@@ -2,6 +2,7 @@
 import useEditTodo from '../hooks/use-edit-todo'
 import { useState} from 'react'
 import { Todos } from '../models/todos'
+import CompleteTask from './CompleteTask'
 
  function TodoListItem(props: Todos) {
     const editTodo = useEditTodo()
@@ -46,9 +47,9 @@ import { Todos } from '../models/todos'
       </>
      )
     }
-    
     return(
       <div className="view">
+          <CompleteTask {...props} />
         <label onDoubleClick={handleDoubleClick}>{props.name}</label>
       </div>
     )
