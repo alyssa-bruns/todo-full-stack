@@ -51,7 +51,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 //PATCH /ap1/v1/todos
-router.patch('/:id', async (req, res) => {
+router.patch('/task/:id', async (req, res) => {
   const id = Number(req.params.id)
   const { name } = req.body
   try{
@@ -63,7 +63,7 @@ router.patch('/:id', async (req, res) => {
   }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/complete/:id', async (req, res) => {
   const id = Number(req.params.id)
   try{
     const todo = await db.markTodoComplete(id)
@@ -74,7 +74,7 @@ router.patch('/:id', async (req, res) => {
   }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/incomplete/:id', async (req, res) => {
   const id = Number(req.params.id)
   try{
     const todo = await db.markTodoIncomplete(id)

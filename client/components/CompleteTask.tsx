@@ -1,23 +1,33 @@
-import { useState } from "react"
-import { completeTodo } from "../apis/apiClient"
 import { Todos } from "../models/todos"
-import useCompleteTodo from "../hooks/use-complete-todos"
+import {useCompleteTodo, useIncompleteTodo} from "../hooks/use-complete-todos"
+import { useState } from "react"
 
 
 function CompleteTask(props: Todos) {
     const completeTask = useCompleteTodo()
-    const [isCompleted, setIsCompleted] = useState(false)
+    const incompleteTask = useIncompleteTodo()
+    const [isCompleted, setIsCompleted] = useState(props.is_completed)
 
-
-       const handleCompletedClick = (e:React.MouseEvent) => {
-        e.preventDefault()
-        setIsCompleted(true)
-        completeTask.mutate(props.id)
+   
+       const handleCompletedClick = () => {
+        setIsCompleted(!isCompleted)
+        if (!isCompleted){
+            completeTask.mutate({ id: props.id, is_completed: !isCompleted })
+        } else {
+            incompleteTask.mutate({ id: props.id, is_completed: isCompleted })
+        }
+        
+        console.log(props.name, props.is_completed)
       }
+    
+      console.log(props)
     return(
-        <>
-        <input onClick={()=>handleCompletedClick(props.id)} className="toggle" type="checkbox"/>
-        </>
+        <input 
+            type="checkbox"
+            // className="toggle"
+            onChange={handleCompletedClick} 
+            checked={isCompleted}
+            />
     )
 }
 

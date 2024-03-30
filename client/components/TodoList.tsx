@@ -27,7 +27,7 @@ function TodoList() {
         return (
       
         <li key={todo.id} >
-          <CompleteTask />
+          <CompleteTask {...todo} />
           <TodoListItem {...todo} /> {/* use spread operater to pass in the other props*/}
           <DeleteItem {...todo} />
         </li>

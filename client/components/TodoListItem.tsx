@@ -51,7 +51,6 @@ import { Todos } from '../models/todos'
   
     return(
       <div className="view">
-        <input className="toggle" type="checkbox"/>
         <label onDoubleClick={handleDoubleClick}>{props.name}</label>
       </div>
     )
