@@ -46,9 +46,7 @@ import { Todos } from '../models/todos'
       </>
      )
     }
-
     
-  
     return(
       <div className="view">
         <label onDoubleClick={handleDoubleClick}>{props.name}</label>

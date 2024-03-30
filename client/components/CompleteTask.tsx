@@ -12,19 +12,19 @@ function CompleteTask(props: Todos) {
        const handleCompletedClick = () => {
         setIsCompleted(!isCompleted)
         if (!isCompleted){
-            completeTask.mutate({ id: props.id, is_completed: !isCompleted })
+            completeTask.mutate({ id: props.id, is_completed: true })
         } else {
-            incompleteTask.mutate({ id: props.id, is_completed: isCompleted })
+            incompleteTask.mutate({ id: props.id, is_completed: false })
         }
         
-        console.log(props.name, props.is_completed)
+        
       }
     
-      console.log(props)
+      console.log(props.name, props.is_completed)
     return(
         <input 
+            className="toggle"
             type="checkbox"
-            // className="toggle"
             onChange={handleCompletedClick} 
             checked={isCompleted}
             />
