@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import useAddTodo from '../hooks/use-add-todos'
 
-
-
 function AddTodo() {
   const [newTodo, setNewTodo] = useState('')
   const mutation = useAddTodo()
@@ -14,7 +12,7 @@ function AddTodo() {
   const handleSubmit = (e: React.FormEvent) => {
     console.log(newTodo)
     e.preventDefault()
-    mutation.mutate({name: newTodo})
+    mutation.mutate({ name: newTodo })
     setNewTodo('')
   }
 
@@ -22,7 +20,6 @@ function AddTodo() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-         
           <input
             aria-label="add a task"
             onChange={handleChange}
@@ -30,9 +27,7 @@ function AddTodo() {
             className="new-todo"
             placeholder="What needs to be done?"
             autoFocus={true}
-           
           />
-        
         </form>
       </div>
     </>

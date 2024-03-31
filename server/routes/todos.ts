@@ -54,7 +54,7 @@ router.delete('/:id', async (req, res) => {
 router.patch('/task/:id', async (req, res) => {
   const id = Number(req.params.id)
   const { name } = req.body
-  try{
+  try {
     const todo = await db.updateTodoName(id, name)
     res.json(todo)
   } catch (error) {
@@ -65,7 +65,7 @@ router.patch('/task/:id', async (req, res) => {
 
 router.patch('/complete/:id', async (req, res) => {
   const id = Number(req.params.id)
-  try{
+  try {
     const todo = await db.markTodoComplete(id)
     res.json(todo)
   } catch (error) {
@@ -76,7 +76,7 @@ router.patch('/complete/:id', async (req, res) => {
 
 router.patch('/incomplete/:id', async (req, res) => {
   const id = Number(req.params.id)
-  try{
+  try {
     const todo = await db.markTodoIncomplete(id)
     res.json(todo)
   } catch (error) {
@@ -84,7 +84,5 @@ router.patch('/incomplete/:id', async (req, res) => {
     res.sendStatus(500)
   }
 })
-
-
 
 export default router

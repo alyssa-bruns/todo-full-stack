@@ -17,16 +17,16 @@ export async function deleteTodo(id: number) {
 }
 
 export async function editTodo(data: TodoPlusId) {
-  const {id, name} = data
-await request.patch(`${rootUrl}/task/${id}`).send({name})
+  const { id, name } = data
+  await request.patch(`${rootUrl}/task/${id}`).send({ name })
 }
 
 export async function completeTodo(data: CompletedPlusId) {
-  const {id, is_completed} = data
-  await request.patch(`${rootUrl}/complete/${id}`).send({is_completed})
+  const { id, is_completed } = data
+  await request.patch(`${rootUrl}/complete/${id}`).send({ is_completed })
 }
 
 export async function incompleteTodo(data: CompletedPlusId) {
-  const {id, is_completed} = data
-  await request.patch(`${rootUrl}/incomplete/${id}`).send({is_completed})
+  const { id, is_completed } = data
+  await request.patch(`${rootUrl}/incomplete/${id}`).send({ is_completed })
 }

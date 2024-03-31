@@ -1,20 +1,20 @@
-import {useMutation, useQueryClient} from '@tanstack/react-query'
-import {Todo} from '../models/todos'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { Todo } from '../models/todos'
 import { addTodo } from '../apis/apiClient'
 
 export default function useAddTodo() {
-const queryClient = useQueryClient()
-return useMutation({
+  const queryClient = useQueryClient()
+  return useMutation({
     mutationFn: async (newTodo: Todo) => addTodo(newTodo),
     onSuccess: () => {
-        queryClient.invalidateQueries({queryKey: ['todos']})
-    }
-})
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+    },
+  })
 }
 
 // export function useCreatePuppy() {
 //     const client = useQueryClient()
-  
+
 //     return useMutation({
 //       mutationFn: async ({ puppy }: { puppy: PuppyData }) => {
 //         const res = await request.post('/api/v1/puppies').send(puppy)

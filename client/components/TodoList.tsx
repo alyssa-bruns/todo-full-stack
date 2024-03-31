@@ -3,35 +3,34 @@ import DeleteItem from './DeleteItem'
 import TodoListItem from './TodoListItem'
 
 function TodoList() {
-  const {data: todos, isPending, isError, error } = useFetchTodos()
+  const { data: todos, isPending, isError, error } = useFetchTodos()
 
   if (isPending) {
     return <p>Loading...</p>
   }
 
   if (isError) {
-    return(
+    return (
       <>
-      {console.error(error)}
-      <p>Error!</p>
+        {console.error(error)}
+        <p>Error!</p>
       </>
     )
   }
 
- 
   return (
     <>
-    <ul className="todo-list"  >
-      {todos?.map((todo) => {
-        return (
-        <li key={todo.id} >
-          < TodoListItem {...todo} /> {/* use spread operater to pass in the other props*/}
-          <DeleteItem {...todo} />
-        </li>
-       
-        )
-      })}
-    </ul>
+      <ul className="todo-list">
+        {todos?.map((todo) => {
+          return (
+            <li key={todo.id}>
+              <TodoListItem {...todo} />{' '}
+              {/* use spread operater to pass in the other props*/}
+              <DeleteItem {...todo} />
+            </li>
+          )
+        })}
+      </ul>
     </>
   )
 }
