@@ -26,7 +26,6 @@ function AddTodo() {
             value={newTodo}
             className="new-todo"
             placeholder="What needs to be done?"
-            autoFocus={true}
           />
         </form>
       </div>
