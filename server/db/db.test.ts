@@ -20,7 +20,7 @@ describe('createTodo', () => {
       priority: 1,
     })
     const allTodos = await db.getTodos()
-    console.log(allTodos)
+    // console.log(allTodos)
     expect(allTodos).toHaveLength(4)
   })
 })
