@@ -1,36 +1,8 @@
 import { beforeEach, expect } from 'vitest'
-import { cleanup, render } from '@testing-library/react'
+import { render, cleanup, screen } from '@testing-library/react/pure'
 import * as matchers from '@testing-library/jest-dom/matchers'
 import '@testing-library/jest-dom/vitest'
-
-import { createMemoryRouter, RouterProvider } from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
-import { router } from '../../server/routes/todos'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createMemoryRouter } from 'react-router-dom'
 
 beforeEach(cleanup)
 expect.extend(matchers)
-
-export function renderRoute(location: string) {
-  // setup user (can be skipped if not using userEvents)
-  const user = userEvent.setup()
-  
-
-
-  // setup useQuery (retry set to false for testing)
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
-    },
-  })
-
-  // render router and queryClientProvider to container
-  const container = render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  )
-  return { user, ...container }
-}

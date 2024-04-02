@@ -21,6 +21,7 @@ function AddTodo() {
       <div>
         <form onSubmit={handleSubmit}>
           <input
+            id="newtodo"
             aria-label="add a task"
             onChange={handleChange}
             value={newTodo}
