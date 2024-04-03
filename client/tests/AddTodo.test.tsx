@@ -1,19 +1,11 @@
 //@vitest-environment jsdom
-import {
-  describe,
-  it,
-  expect,
-  vi,
-  afterEach,
-  beforeEach,
-  beforeAll,
-} from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest'
 import {
   screen,
   render,
-  within,
-  waitForElementToBeRemoved,
-  waitFor,
+  // within,
+  // waitForElementToBeRemoved,
+  // waitFor,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 // https://testing-library.com/docs/user-event/intro
@@ -53,7 +45,7 @@ beforeAll(() => {
 
 vi.spyOn(console, 'error').mockImplementation(() => {})
 afterEach(() => {
-  vi.clearAllMocks
+  vi.clearAllMocks()
 })
 
 afterEach(() => {
@@ -67,7 +59,7 @@ describe('<AddTodo/>', async () => {
       .reply(200, mockTodos)
 
     const addScope = nock('http://localhost')
-      .post('/api/vi/todos', { newTodo })
+      .post('/api/v1/todos', { newTodo })
       .reply(201)
 
     render(
@@ -76,12 +68,28 @@ describe('<AddTodo/>', async () => {
       </QueryClientProvider>,
     )
 
-    // await waitForElementToBeRemoved(() => screen.queryByText(/loading/i))
-
     const todoInput = await screen.getByLabelText(/add a task/i)
+
+    userEvent.type(todoInput, newTodo.name)
+    userEvent.type(todoInput, '{enter}')
 
     // await waitForElementToBeRemoved(() => screen.queryByText(/adding/i))
     // await waitForElementToBeRemoved(() => screen.queryByText(/refreshing/i))
+
+    // const list = (await screen.findAllByRole('list')) as HTMLElement[]
+    // const listItems = within(list[0])
+    //   .getAllByRole('listitem')
+    //   .map((li) => li.textContent)
+
+    // expect(listItems).toMatchInlineSnapshot(`
+    //   [
+    //     "Wash dishes",
+    //     "Fold laundry",
+    //     "Complete Testing",
+    //   ]
+    // `)
+
+    console.log(addScope)
 
     expect(scope.isDone()).toBe(true)
     expect(addScope.isDone()).toBe(true)

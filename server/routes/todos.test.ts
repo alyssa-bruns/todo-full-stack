@@ -36,8 +36,6 @@ describe('POST api/v1/todos', () => {
     vi.mocked(todosDb.createTodo).mockResolvedValue([3])
     const addTodoSpy = vi.spyOn(todosDb, 'createTodo')
 
-    console.log(newTodo)
-
     const res = await request(server).post('/api/v1/todos').send(newTodo)
 
     expect(res.statusCode).toBe(200)
