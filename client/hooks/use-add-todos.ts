@@ -12,16 +12,3 @@ export default function useAddTodo() {
   })
 }
 
-// export function useCreatePuppy() {
-//     const client = useQueryClient()
-
-//     return useMutation({
-//       mutationFn: async ({ puppy }: { puppy: PuppyData }) => {
-//         const res = await request.post('/api/v1/puppies').send(puppy)
-//         return res.body as { id: number; location: string }
-//       },
-//       onSuccess: () => {
-//         client.invalidateQueries({ queryKey: ['puppies'] })
-//       },
-//     })
-//   }

@@ -14,23 +14,6 @@ import './setup.ts'
 import AddTodo from '../components/AddTodo.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-const mockTodos = [
-  {
-    id: 1,
-    name: 'Wash dishes',
-    priority: 3,
-    is_active: true,
-    is_completed: false,
-  },
-  {
-    id: 2,
-    name: 'Fold laundry',
-    priority: 4,
-    is_active: false,
-    is_completed: true,
-  },
-]
-
 const newTodo = {
   id: 3,
   name: 'Complete Testing',
@@ -44,9 +27,6 @@ beforeAll(() => {
 })
 
 vi.spyOn(console, 'error').mockImplementation(() => {})
-afterEach(() => {
-  vi.clearAllMocks()
-})
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -54,12 +34,8 @@ afterEach(() => {
 
 describe('<AddTodo/>', async () => {
   it('should add a new todo', async () => {
-    const scope = nock('http://localhost')
-      .get('/api/v1/todos')
-      .reply(200, mockTodos)
-
     const addScope = nock('http://localhost')
-      .post('/api/v1/todos', { newTodo })
+      .post('/api/v1/todos', { name: newTodo.name })
       .reply(201)
 
     render(
@@ -70,28 +46,10 @@ describe('<AddTodo/>', async () => {
 
     const todoInput = await screen.getByLabelText(/add a task/i)
 
-    userEvent.type(todoInput, newTodo.name)
-    userEvent.type(todoInput, '{enter}')
+    const user = userEvent.setup()
+    await user.type(todoInput, newTodo.name)
+    await user.type(todoInput, '{enter}')
 
-    // await waitForElementToBeRemoved(() => screen.queryByText(/adding/i))
-    // await waitForElementToBeRemoved(() => screen.queryByText(/refreshing/i))
-
-    // const list = (await screen.findAllByRole('list')) as HTMLElement[]
-    // const listItems = within(list[0])
-    //   .getAllByRole('listitem')
-    //   .map((li) => li.textContent)
-
-    // expect(listItems).toMatchInlineSnapshot(`
-    //   [
-    //     "Wash dishes",
-    //     "Fold laundry",
-    //     "Complete Testing",
-    //   ]
-    // `)
-
-    console.log(addScope)
-
-    expect(scope.isDone()).toBe(true)
     expect(addScope.isDone()).toBe(true)
   })
 })
