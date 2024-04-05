@@ -10,7 +10,6 @@ function AddTodo() {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    console.log(newTodo)
     e.preventDefault()
     mutation.mutate({ name: newTodo })
     setNewTodo('')

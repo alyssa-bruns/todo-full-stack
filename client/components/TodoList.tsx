@@ -23,7 +23,7 @@ function TodoList() {
       <ul className="todo-list">
         {todos?.map((todo) => {
           return (
-            <li key={todo.id}>
+            <li key={todo.id} className={todo.is_completed ? 'completed' : ''}>
               <TodoListItem {...todo} />{' '}
               {/* use spread operater to pass in the other props*/}
               <DeleteItem {...todo} />
