@@ -1,17 +1,13 @@
-import AddTodo from './AddTodo.tsx'
-import TodoList from './TodoList.tsx'
+import { Outlet } from 'react-router-dom'
+import Footer from './Footer.tsx'
+import Header from './Header.tsx'
 
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>todos</h1>
-      </header>
-      <section className="main">
-        <AddTodo />
-        <TodoList />
-      </section>
-      <footer className="footer"></footer>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   )
 }
